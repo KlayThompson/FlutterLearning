@@ -1,111 +1,333 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: PetCard(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class PetCard extends StatelessWidget {
+//  final PetCardViewModel data;
+//  final PetCardViewModel data;
+//
+//  const PetCard({
+//    Key key,
+//    this.data,
+//  }) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  final PetCardViewModel data = PetCardViewModel(
+    coverUrl: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1425538345,901220022&fm=26&gp=0.jpg',
+    avatarUrl: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1699287406,228622974&fm=26&gp=0.jpg',
+    userName: '大米要煮小米粥',
+    description: '小米 | 我家的小仓鼠',
+    publishTime: '12:59',
+    topic: '萌宠小屋',
+    publishContent: '今天带着小VIVI去了爪子生活体验馆，好多好玩的小东西都想带回家！',
+    replies: 356,
+    likes: 258,
+    shares: 126,
+  );
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  Widget renderCover() {
+    return Stack(
+      fit: StackFit.passthrough,
+      children: <Widget>[
+        ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8)
+          ),
+          child: Image.network(
+            data.coverUrl,
+            height: 200,
+            fit: BoxFit.fitWidth,
+          ),
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 100,
+          bottom: 0,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromARGB(0, 0, 0, 0),
+                  Color.fromARGB(80, 0, 0, 0)
+                ],
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
 
-  final String title;
+  Widget renderUserInfo() {
+    return Container(
+      margin: EdgeInsets.only(top: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              CircleAvatar(
+                radius: 20,
+                backgroundColor: Color(0xFFCCCCCC),
+                backgroundImage: NetworkImage(data.avatarUrl),
+              ),
+              Padding(padding: EdgeInsets.only(left: 8.0),),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    data.userName,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF333333),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 2),),
+                  Text(
+                    data.description,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFF999999),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+          Text(
+            data.publishTime,
+            style: TextStyle(
+              fontSize: 13,
+              color: Color(0xFF999999)
+            ),
+          )
+        ],
+      ),
+    );
+  }
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+  Widget renderPublishContent() {
+    return new Container(
+      margin: EdgeInsets.only(top: 16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(bottom: 14.0),
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              color: Color(0xFFFFC600),
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(8),
+                bottomLeft: Radius.circular(8),
+                bottomRight: Radius.circular(8)
+              ),
+            ),
+            child: Text(
+              '# ${data.topic}',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.white
+              ),
+            ),
+          ),
+          Text(
+            data.publishContent,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff333333)
+            ),
+          )
+        ],
+      ),
+    );
+  }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  Widget renderInteractionArea() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(
+                Icons.message,
+                size: 16,
+                color: Color(0xff999999),
+              ),
+              Padding(padding: EdgeInsets.only(left: 6),),
+              Text(
+                data.replies.toString(),
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Color(0xff999999)
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Icon(
+                Icons.favorite,
+                size: 16,
+                color: Color(0xff999999),
+              ),
+              Padding(padding: EdgeInsets.only(left: 6),),
+              Text(
+                data.likes.toString(),
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xff999999)
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Icon(
+                Icons.share,
+                size: 16,
+                color: Color(0xff999999),
+              ),
+              Padding(padding: EdgeInsets.only(left: 6),),
+              Text(
+                data.shares.toString(),
+                style: TextStyle(
+                    fontSize: 15,
+                    color: Color(0xff999999)
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+    // TODO: implement build
+    return Container(
+      margin: EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 6,
+            spreadRadius: 4,
+            color: Color.fromARGB(20, 0, 0, 0),
+          )
+        ]
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          this.renderCover(),
+          this.renderUserInfo(),
+          this.renderPublishContent(),
+          this.renderInteractionArea()
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class PetCardViewModel {
+  /// 封面地址
+  final String coverUrl;
+
+  /// 用户头像地址
+  final String avatarUrl;
+
+  /// 用户名
+  final String userName;
+
+  /// 用户描述
+  final String description;
+
+  /// 话题
+  final String topic;
+
+  /// 发布时间
+  final String publishTime;
+
+  /// 发布内容
+  final String publishContent;
+
+  /// 回复数量
+  final int replies;
+
+  /// 喜欢数量
+  final int likes;
+
+  /// 分享数量
+  final int shares;
+
+  const PetCardViewModel({
+    this.coverUrl,
+    this.avatarUrl,
+    this.userName,
+    this.description,
+    this.topic,
+    this.publishTime,
+    this.publishContent,
+    this.replies,
+    this.likes,
+    this.shares
+  });
+}
+/// 宠物卡片mock数据
+const PetCardViewModel petCardData = PetCardViewModel(
+  coverUrl: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1425538345,901220022&fm=26&gp=0.jpg',
+  avatarUrl: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1699287406,228622974&fm=26&gp=0.jpg',
+  userName: '大米要煮小米粥',
+  description: '小米 | 我家的小仓鼠',
+  publishTime: '12:59',
+  topic: '萌宠小屋',
+  publishContent: '今天带着小VIVI去了爪子生活体验馆，好多好玩的小东西都想带回家！',
+  replies: 356,
+  likes: 258,
+  shares: 126,
+);
