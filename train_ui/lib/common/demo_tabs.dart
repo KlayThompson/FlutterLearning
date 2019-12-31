@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class DemoTableViewModel {
+class DemoTabViewModel {
   final String title;
   final Widget widget;
   
-  const DemoTableViewModel({
+  const DemoTabViewModel({
     this.title,
     this.widget
   });
@@ -13,7 +13,7 @@ class DemoTableViewModel {
 
 class DemoTabs extends StatelessWidget {
   final String title;
-  final List<DemoTableViewModel> demos;
+  final List<DemoTabViewModel> demos;
   final bool tabScrollable;
   final TabController tabController;
 

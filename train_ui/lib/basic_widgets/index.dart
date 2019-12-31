@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:train_ui/basic_widgets/mock_data.dart';
 import 'package:train_ui/basic_widgets/pet_card.dart';
 import 'package:train_ui/common/demo_tabs.dart';
 
-List<DemoTableViewModel> demos = [
-  DemoTableViewModel(title: '宠物卡片', widget: PetCard())
-].map((item) => DemoTableViewModel(
+List<DemoTabViewModel> demos = [
+  DemoTabViewModel(title: '宠物卡片', widget: PetCard(data: petCardData,))
+].map((item) => DemoTabViewModel(
   title: item.title,
   widget: Column(
     mainAxisSize: MainAxisSize.min,
