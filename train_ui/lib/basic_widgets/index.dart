@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:train_ui/basic_widgets/credit_card.dart';
 import 'package:train_ui/basic_widgets/mock_data.dart';
 import 'package:train_ui/basic_widgets/pet_card.dart';
+import 'package:train_ui/basic_widgets/timeline.dart';
 import 'package:train_ui/common/demo_tabs.dart';
 
 List<DemoTabViewModel> demos = [
   DemoTabViewModel(title: '宠物卡片', widget: PetCard(data: petCardData,)),
-  DemoTabViewModel(title: '信用卡', widget: CreditCard(data: creditCardData,))
+  DemoTabViewModel(title: '信用卡', widget: CreditCard(data: creditCardData,)),
+  DemoTabViewModel(title: '朋友圈', widget: TimeLine(data: timeLineData,))
 ].map((item) => DemoTabViewModel(
   title: item.title,
   widget: Column(
