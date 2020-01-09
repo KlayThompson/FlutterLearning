@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:train_ui/basic_widgets/index.dart';
+import 'package:train_ui/list_view/index.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       ),
       home: HomePage(),
       routes: {
-        'basic_widgets': (context) => BasicWidgetsDemo()
+        'basic_widgets': (context) => BasicWidgetsDemo(),
+        'list_view': (context) => ListViewDemo()
       },
     );
   }

@@ -21,7 +21,7 @@ class DemoTabs extends StatelessWidget {
     this.title,
     this.demos,
     this.tabController,
-    this.tabScrollable
+    this.tabScrollable = true
   });
 
   @override
