@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:train_ui/basic_widgets/index.dart';
+import 'package:train_ui/custom_icon/index.dart';
 import 'package:train_ui/grid_view/index.dart';
 import 'package:train_ui/list_view/index.dart';
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'basic_widgets': (context) => BasicWidgetsDemo(),
         'list_view': (context) => ListViewDemo(),
-        'grid_view': (context) => GridViewDemo()
+        'grid_view': (context) => GridViewDemo(),
+        'custom_icons': (context) => CustomIconsDemo()
       },
     );
   }
