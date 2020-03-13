@@ -4,6 +4,7 @@ import 'package:train_ui/basic_widgets/index.dart';
 import 'package:train_ui/custom_icon/index.dart';
 import 'package:train_ui/grid_view/index.dart';
 import 'package:train_ui/list_view/index.dart';
+import 'package:train_ui/sliver_widgets/index.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         'basic_widgets': (context) => BasicWidgetsDemo(),
         'list_view': (context) => ListViewDemo(),
         'grid_view': (context) => GridViewDemo(),
-        'custom_icons': (context) => CustomIconsDemo()
+        'custom_icons': (context) => CustomIconsDemo(),
+        'sliver_widgets': (context) => SliverWidgetsDemo()
       },
     );
   }
