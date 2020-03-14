@@ -19,9 +19,7 @@ class _HomePageState extends State<HomePage> {
           textColor: Colors.primaries.first,
           color: Colors.white,
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => SearchPage())
-            );
+            Navigator.pushNamed(context, '/search');
           },
         ),
         RaisedButton(
@@ -29,9 +27,9 @@ class _HomePageState extends State<HomePage> {
           textColor: Colors.white,
           child: Text('新建表单'),
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => FormPage())
-            );
+            Navigator.pushNamed(context, '/form', arguments: {
+              'formId': '333333'
+            });
           },
         )
       ],

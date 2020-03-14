@@ -24,6 +24,18 @@ class _MorePageState extends State<MorePage> {
         ListTile(
           leading: Icon(Icons.backup),
           title: Text('备份资料'),
+        ),
+        RaisedButton(
+            onPressed: (){
+              Navigator.of(context).pushNamed('/login');
+            },
+            child: Text('登录'),
+        ),
+        RaisedButton(
+          child: Text('注册'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/registerOne');
+          },
         )
       ],
     );

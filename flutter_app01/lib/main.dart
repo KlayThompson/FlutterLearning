@@ -472,6 +472,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app01/tabs/TabsPage.dart';
+import 'Routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -480,7 +481,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: TabsPage(),
+      initialRoute: '/',
+      onGenerateRoute: route,
     );
   }
 }

@@ -4,12 +4,17 @@ import 'package:flutter_app01/tabs/MessagePage.dart';
 import 'package:flutter_app01/tabs/MorePage.dart';
 
 class TabsPage extends StatefulWidget {
+  final index;
+  const TabsPage({Key key, this.index=0}) : super(key: key);
   @override
-  _TabsPageState createState() => _TabsPageState();
+  _TabsPageState createState() => _TabsPageState(this.index);
 }
 
 class _TabsPageState extends State<TabsPage> {
   int _currentIndex = 0;
+  _TabsPageState(index) {
+    this._currentIndex = index;
+  }
   List _pageList = [
     HomePage(),
     MessagePage(),
