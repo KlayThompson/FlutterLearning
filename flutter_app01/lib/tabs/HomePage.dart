@@ -31,6 +31,22 @@ class _HomePageState extends State<HomePage> {
               'formId': '333333'
             });
           },
+        ),
+        RaisedButton(
+          color: Colors.red,
+          textColor: Colors.white,
+          child: Text('News'),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/newsLists');
+          },
+        ),
+        RaisedButton(
+          color: Colors.red,
+          textColor: Colors.white,
+          child: Text('tabbarcontroller'),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/tabbarController');
+          },
         )
       ],
     );
