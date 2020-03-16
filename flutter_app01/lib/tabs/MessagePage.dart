@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:date_format/date_format.dart';
 
 class MessagePage extends StatefulWidget {
   @override
@@ -6,6 +7,12 @@ class MessagePage extends StatefulWidget {
 }
 
 class _MessagePageState extends State<MessagePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(formatDate(DateTime(1989, 2, 21), [yyyy, '-', mm, '-', dd]));
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

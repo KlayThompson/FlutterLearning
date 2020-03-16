@@ -9,6 +9,7 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   final Map params;
+  var value = true;
   _FormPageState({this.params});
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,16 @@ class _FormPageState extends State<FormPage> {
         appBar: AppBar(
           title: Text('appbarTitle'),
         ),
-        body: Text(this.params['formId'])
+        body: Column(
+          children: <Widget>[
+            Text(this.params['formId']),
+            Switch(value: this.value, onChanged: (v) {
+              setState(() {
+                this.value = v;
+              });
+            })
+          ],
+        )
     );;
   }
 }

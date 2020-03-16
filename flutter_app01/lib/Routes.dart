@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app01/pages/FormPage.dart';
+import 'package:flutter_app01/pages/FormTest.dart';
 import 'package:flutter_app01/pages/NewsListPage.dart';
 import 'package:flutter_app01/pages/SearchPage.dart';
 import 'package:flutter_app01/pages/user/RegisterOnePage.dart';
@@ -16,7 +17,8 @@ final routes = {
   '/registerOne': (context) => RegisterOnePage(),
   '/registerTwo': (context) => RegisterTwoPage(),
   '/newsLists': (context) => NewsListPage(),
-  '/tabbarController': (context) => TabBarControllerPage()
+  '/tabbarController': (context) => TabBarControllerPage(),
+  '/formTest': (context) => FormTestPage()
 };
 
 var route = (RouteSettings settings) {
