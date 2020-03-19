@@ -1,0 +1,5 @@
+name: flutter_website_server
+description: A new Flutter application server client.
+
+dependencies:
+  http_server: ^0.9.8+3
