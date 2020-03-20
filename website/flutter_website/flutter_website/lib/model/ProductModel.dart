@@ -11,7 +11,7 @@ class ProductItemModel {
       desc: json['desc'],
       imageUrl: json['imageUrl'],
       type: json['type'],
-      name: json['name']
+      name: json['name'],
     );
   }
 }

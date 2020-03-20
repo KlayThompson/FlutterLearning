@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter_website/Routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_website/App.dart';
 import 'package:flutter_website/Loading.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
                 leading: IconButton(
                     icon: Icon(Icons.arrow_back_ios),
                     onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('app');
+                      Navigator.of(context).pushReplacementNamed('/app');
                     }),
               ),
             )
@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.redAccent,
       ),
       home: LoadingPage(),
+      onGenerateRoute: route,
     );
   }
 }

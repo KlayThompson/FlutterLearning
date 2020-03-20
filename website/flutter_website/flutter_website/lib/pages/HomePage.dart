@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_website/model/ProductModel.dart';
 import 'package:flutter_website/pages/BannerWidget.dart';
 import 'package:flutter_website/service/ProductService.dart';
+import 'HomeProductPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -32,16 +33,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('企业站'),
+          centerTitle: true,
           actions: <Widget>[
-            IconButton(icon: Icon(Icons.search), onPressed: () {})
+            IconButton(icon: Icon(Icons.search), onPressed: () {}),
+            IconButton(icon: Icon(Icons.add), onPressed: () {})
           ],
         ),
         body: ListView(
-          children: this.lists.data.map((model) {
-            return ListTile(
-              title: Text(model.name),
-            );
-          }).toList(),
+          children: <Widget>[
+            BannerWidget(),
+            HomeProductPage(list: this.lists,),
+          ],
         )
     );
   }

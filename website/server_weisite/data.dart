@@ -5,56 +5,56 @@ var products = {
       {
         "desc": "4999\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/82ddffd7562c54f9166fa876c143ff22.png",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19ad4819.jpg",
         "type": "\u5c0f\u7c73",
         "name": "\u5c0f\u7c7310 Pro"
       },
       {
         "desc": "3999\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4a76ee684e51f0ee531ef3dc7f0aeaf.png",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19bd58c2.jpg",
         "type": "\u5c0f\u7c73",
         "name": "\u5c0f\u7c7310"
       },
       {
         "desc": "2599\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/be92bc4baa572bf467fc9e881fd4be2a.png",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19cd7ce5.jpg",
         "type": "\u5c0f\u7c73",
         "name": "\u5c0f\u7c73CC9 Pro"
       },
       {
         "desc": "3699\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/41c566d825a3ae3b5751a78d4c7cffdb.png",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19deb1b5.jpg",
         "type": "\u5c0f\u7c73",
         "name": "\u5c0f\u7c739 Pro 5G"
       },
       {
         "desc": "1499\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/f515ab05232ed14ccd78ec67e024495a.png",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19f07443.jpg",
         "type": "\u5c0f\u7c73",
         "name": "\u5c0f\u7c73CC9"
       },
       {
         "desc": "1099\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/df9b3e7a562e02a33eb069b3f0119815.png",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b1a018996.jpg",
         "type": "\u5c0f\u7c73",
         "name": "\u5c0f\u7c73CC9e"
       },
       {
         "desc": "1599\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cff2977b8aab1e43b94b2f00083f4ae1.jpg",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b1a12ee93.jpg",
         "type": "\u5c0f\u7c73",
         "name": "Redmi K30"
       },
       {
         "desc": "1999\u5143\u8d77",
         "imageUrl":
-            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/742a328bdaa242aea89ec2a9c8661013.jpg",
+            "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b1a23963d.jpg",
         "type": "\u5c0f\u7c73",
         "name": "Redmi K30 5G"
       },
@@ -298,12 +298,12 @@ var products = {
 
 var news = {
   "items": [
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
-    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19ad4819.jpg"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19cd7ce5.jpg"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19bd58c2.jpg"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19deb1b5.jpg"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b19f07443.jpg"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b1a018996.jpg"},
+    {"author": "佳佳", "title": "添加商品", "content": "小张添加了一个关于服务器大的商品", "imgUrl": "http://pic1.win4000.com/wallpaper/2020-03-11/5e68b1a12ee93.jpg"},
   ]
 };
