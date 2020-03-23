@@ -6,32 +6,20 @@ import 'package:flutter_store/config.dart';
 import 'package:flutter_store/service/service_method.dart';
 
 class HotProductWidget extends StatefulWidget {
+  final List products;
+  HotProductWidget({this.products});
   @override
-  _HotProductWidgetState createState() => _HotProductWidgetState();
+  _HotProductWidgetState createState() => _HotProductWidgetState(hotProducts: products);
 }
 
 class _HotProductWidgetState extends State<HotProductWidget> {
 
-  int currentPage = 0;
-  List products = [];
-
+  List hotProducts;
+  _HotProductWidgetState({this.hotProducts});
   @override
   void initState() {
-    _getProductList();
     // TODO: implement initState
     super.initState();
-  }
-
-  _getProductList() {
-    var param = {'page': currentPage};
-    requestData(Config.homePageBelowConten, params: param).then((val) {
-      //decode
-      var json = jsonDecode(val.toString());
-      List tempList = (json['data'] as List).cast();
-      setState(() {
-        products.addAll(tempList);
-      });
-    });
   }
 
   Widget _getListTitleWidget() {
@@ -47,7 +35,7 @@ class _HotProductWidgetState extends State<HotProductWidget> {
   //warp
   Widget _getProductWrapWidget() {
     //先组装widget list
-    List<Widget> productsWidget = products.map((val) {
+    List<Widget> productsWidget = hotProducts.map((val) {
       return InkWell(
         onTap: () {},
         child: Container(
@@ -85,7 +73,7 @@ class _HotProductWidgetState extends State<HotProductWidget> {
       );
     }).toList();
     
-    return products.length == 0 ? Text('') :
+    return hotProducts.length == 0 ? Text('') :
         Wrap(
           spacing: 2,
           children: productsWidget,
