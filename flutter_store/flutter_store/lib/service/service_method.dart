@@ -1,18 +1,17 @@
-
-
 import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:flutter_store/config.dart';
 
-Future getHomePageContent() async {
+Future requestData(url, {params}) async {
   try{
-    print('开始请求首页数据');
+    print('开始请求数据......................url=${url}');
     Dio dio = new Dio();
     dio.options.contentType = ContentType.parse("application/x-www-form-urlencoded").toString();
-    var formData = {'lon':'115.02932','lat':'35.76189'};
     Response res;
-    res = await dio.post(Config.homePageContentUrl, data: formData);
+    if (params == null) {
+      res = await dio.post(url);
+    } else {
+      res = await dio.post(url, data: params);
+    }
     if (res.statusCode == 200) {
       return res.data;
     } else {

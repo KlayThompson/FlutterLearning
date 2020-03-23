@@ -31,7 +31,7 @@ class _IndexPageState extends State<IndexPage> {
         title: Text('会员中心')
     )
   ];
-  final List bodyPages = [
+  final List<Widget> bodyPages = [
     HomePage(),
     CategoryPage(),
     CartPage(),
@@ -52,7 +52,10 @@ class _IndexPageState extends State<IndexPage> {
             });
           },
         ),
-        body: bodyPages[currentIndex]
+        body: IndexedStack(
+          index: currentIndex,
+          children: bodyPages,
+        )
     );;
   }
 }

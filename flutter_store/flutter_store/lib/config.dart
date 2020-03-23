@@ -1,4 +1,5 @@
 class Config {
-  static String ip = 'https://wxmini.baixingliangfan.cn/baixing/';
-  static String homePageContentUrl = ip + 'wxmini/homePageContent';
+  static String baseUrl = 'https://wxmini.baixingliangfan.cn/baixing/';
+  static String homePageContentUrl = baseUrl + 'wxmini/homePageContent';
+  static String homePageBelowConten = baseUrl + 'wxmini/homePageBelowConten';
 }

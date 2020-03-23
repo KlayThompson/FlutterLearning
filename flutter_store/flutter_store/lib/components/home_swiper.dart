@@ -19,7 +19,12 @@ class HomeSwiperWidget extends StatelessWidget {
           return Image.network(this.items[index]['image'],fit: BoxFit.fill,);
         },
         autoplay: true,
-        pagination: SwiperPagination(),
+        pagination: SwiperPagination(
+          builder: DotSwiperPaginationBuilder(
+            color: Color.fromRGBO(0, 0, 0, .3),
+            activeColor: Color(0xff333333)
+          )
+        ),
       ),
     );
   }
