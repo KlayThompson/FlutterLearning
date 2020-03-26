@@ -3,9 +3,18 @@ import 'package:flutter_website/Routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_website/App.dart';
 import 'package:flutter_website/Loading.dart';
+import 'package:flutter_website/model/counter_model.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  final counter = CounterModel();
+  runApp(
+    Provider<CounterModel>.value(
+      child: ChangeNotifierProvider.value(value: counter, child: MyApp(),),
+    )
+  );
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

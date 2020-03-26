@@ -4,6 +4,7 @@ import 'package:flutter_website/pages/CommonWebViewPage.dart';
 import 'package:flutter_website/pages/ProductDetailPage.dart';
 import 'package:flutter_website/pages/NewsDetailPage.dart';
 import 'package:flutter_website/pages/ContactUsPage.dart';
+import 'package:flutter_website/pages/TestProviderPage.dart';
 
 final routes = {
   '/app': (context) => AppPage(),
@@ -11,6 +12,7 @@ final routes = {
   '/newsDetail': (context, {arguments}) => NesDetailPage(itemModel: arguments,),
   '/webView': (context, {arguments}) => CommonWebViewPage(webInfo: arguments,),
   '/contact': (context) => ContactUsPage(),
+  '/testProvider': (context) => TestProviderPage()
 };
 
 var route = (RouteSettings settings) {
