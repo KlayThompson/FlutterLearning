@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store/app.dart';
 import 'package:flutter_store/config.dart';
 import 'package:flutter_store/service/service_method.dart';
 
@@ -37,7 +39,9 @@ class _HotProductWidgetState extends State<HotProductWidget> {
     //先组装widget list
     List<Widget> productsWidget = hotProducts.map((val) {
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          App.router.navigateTo(context, '/productDetail?id=${val['goodsId']}', transition: TransitionType.cupertino);
+        },
         child: Container(
           color: Colors.white,
           padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
