@@ -1,5 +1,7 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store/app.dart';
 
 class CommendProductWidget extends StatelessWidget {
   final List lists;
@@ -28,16 +30,18 @@ class CommendProductWidget extends StatelessWidget {
           itemCount: lists.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
-            return _getSingleCellWidget(index);
+            return _getSingleCellWidget(context,index);
           }),
     );
   }
 
   //single cell
-  Widget _getSingleCellWidget(int index) {
+  Widget _getSingleCellWidget(BuildContext context, int index) {
     var item = lists[index];
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        App.router.navigateTo(context, '/productDetail?id=${item['goodsId']}', transition: TransitionType.cupertino);
+      },
       child: Container(
         height: ScreenUtil().setHeight(330),
         width: ScreenUtil().setWidth(250),

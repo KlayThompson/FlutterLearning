@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store/app.dart';
 
 class AdBannerWidget extends StatelessWidget {
   final String adImageUrl;

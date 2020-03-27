@@ -1,5 +1,7 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store/app.dart';
 
 class FloorContentWidget extends StatelessWidget {
   final imgUrl;
@@ -15,25 +17,25 @@ class FloorContentWidget extends StatelessWidget {
   }
 
   //product content list view
-  Widget _getProductListView() {
+  Widget _getProductListView(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
-              _getSingleProductItemWidget(lists[0]),
+              _getSingleProductItemWidget(context,lists[0]),
               Column(
                 children: <Widget>[
-                  _getSingleProductItemWidget(lists[1]),
-                  _getSingleProductItemWidget(lists[2]),
+                  _getSingleProductItemWidget(context,lists[1]),
+                  _getSingleProductItemWidget(context,lists[2]),
                 ],
               )
             ],
           ),
           Row(
             children: <Widget>[
-              _getSingleProductItemWidget(lists[3]),
-              _getSingleProductItemWidget(lists[4]),
+              _getSingleProductItemWidget(context,lists[3]),
+              _getSingleProductItemWidget(context,lists[4]),
             ],
           )
         ],
@@ -42,9 +44,11 @@ class FloorContentWidget extends StatelessWidget {
   }
 
   //single product item
-  Widget _getSingleProductItemWidget(Map goods) {
+  Widget _getSingleProductItemWidget(BuildContext context,Map goods) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        App.router.navigateTo(context, '/productDetail?id=${goods['goodsId']}', transition: TransitionType.cupertino);
+      },
       child: Container(
         width: ScreenUtil().setWidth(375),
         child: Image.network(goods['image']),
@@ -58,7 +62,7 @@ class FloorContentWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _getTitleImageWidget(),
-          _getProductListView()
+          _getProductListView(context)
         ],
       ),
     );

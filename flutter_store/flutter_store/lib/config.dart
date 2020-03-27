@@ -4,5 +4,6 @@ class Config {
   static String homePageBelowConten = baseUrl + 'wxmini/homePageBelowConten';
   static String getCategory = baseUrl +'wxmini/getCategory';
   static String getMallGoods = baseUrl +'wxmini/getMallGoods';
+  static String getGoodDetailById = baseUrl +'wxmini/getGoodDetailById';
 
 }

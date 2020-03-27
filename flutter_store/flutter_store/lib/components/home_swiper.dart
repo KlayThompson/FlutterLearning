@@ -1,4 +1,6 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_store/app.dart';
 import 'package:flutter_store/model/home_content_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +17,9 @@ class HomeSwiperWidget extends StatelessWidget {
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemCount: items.length,
+        onTap: (index) {
+          App.router.navigateTo(context, '/productDetail?id=${this.items[index]['goodsId']}', transition: TransitionType.cupertino);
+        },
         itemBuilder: (context, index) {
           return Image.network(this.items[index]['image'],fit: BoxFit.fill,);
         },
