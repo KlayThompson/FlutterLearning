@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store/pages/product_detail/product_detail_bottom.dart';
+import 'package:flutter_store/pages/product_detail/product_detail_html_widget.dart';
+import 'package:flutter_store/pages/product_detail/product_detail_tabbar_widget.dart';
 import 'package:flutter_store/pages/product_detail/product_detail_top_widget.dart';
 import 'package:flutter_store/provide/product_detail_provider.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailPage extends StatelessWidget {
-
   final String productId;
   ProductDetailPage(this.productId);
   @override
@@ -18,18 +22,29 @@ class ProductDetailPage extends StatelessWidget {
           builder: (context, snapshot) {
             print(snapshot.data);
             if (snapshot.hasData) {
-              return Container(
-                child: Center(
-                  child: Consumer<ProductDetailProvider>(builder: (context,provider, child) {
-                    return Container(
-                      child: ListView(
-                        children: <Widget>[
-                          ProductDetailTopWidget(goodInfo: provider.productInfoModel.goodInfo,)
-                        ],
+              return Stack(
+                children: <Widget>[
+                  Positioned(
+                      child: Container(
+                        child: Consumer<ProductDetailProvider>(
+                            builder: (context, provider, child) {
+                              return Container(
+                                child: ListView(
+                                  children: <Widget>[
+                                    ProductDetailTopWidget(
+                                      goodInfo: provider.productInfoModel.goodInfo,
+                                    ),
+                                    ProductDetailTabbarWidget(),
+                                    ProductDetailHtmlWidget()
+                                  ],
+                                ),
+                              );
+                            }),
                       ),
-                    );
-                  }),
-                ),
+                  ),
+                  Positioned(
+                      bottom: 0, left: 0, child: ProductDetailBottomWidget())
+                ],
               );
             } else {
               return Container(
@@ -39,11 +54,10 @@ class ProductDetailPage extends StatelessWidget {
               );
             }
           },
-        )
-    );
+        ));
   }
 
-  Future _getProductDetail(BuildContext context) async{
+  Future _getProductDetail(BuildContext context) async {
     var _provider = Provider.of<ProductDetailProvider>(context, listen: false);
     await _provider.getProductDetailByProductId(this.productId);
     return '完成加载';
