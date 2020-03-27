@@ -22,28 +22,26 @@ class ProductDetailPage extends StatelessWidget {
           builder: (context, snapshot) {
             print(snapshot.data);
             if (snapshot.hasData) {
-              return Stack(
+              return Column(
                 children: <Widget>[
-                  Positioned(
-                      child: Container(
-                        child: Consumer<ProductDetailProvider>(
-                            builder: (context, provider, child) {
-                              return Container(
-                                child: ListView(
-                                  children: <Widget>[
-                                    ProductDetailTopWidget(
-                                      goodInfo: provider.productInfoModel.goodInfo,
-                                    ),
-                                    ProductDetailTabbarWidget(),
-                                    ProductDetailHtmlWidget()
-                                  ],
+                  Container(
+                    height: ScreenUtil().setHeight(1334 - 128 - 120 - 24),
+                    child: Consumer<ProductDetailProvider>(
+                        builder: (context, provider, child) {
+                          return Container(
+                            child: ListView(
+                              children: <Widget>[
+                                ProductDetailTopWidget(
+                                  goodInfo: provider.productInfoModel.goodInfo,
                                 ),
-                              );
-                            }),
-                      ),
+                                ProductDetailTabbarWidget(),
+                                ProductDetailHtmlWidget()
+                              ],
+                            ),
+                          );
+                        }),
                   ),
-                  Positioned(
-                      bottom: 0, left: 0, child: ProductDetailBottomWidget())
+                  ProductDetailBottomWidget()
                 ],
               );
             } else {
