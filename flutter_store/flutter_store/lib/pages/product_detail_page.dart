@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 class ProductDetailPage extends StatelessWidget {
   final String productId;
   ProductDetailPage(this.productId);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,26 +23,18 @@ class ProductDetailPage extends StatelessWidget {
           builder: (context, snapshot) {
             print(snapshot.data);
             if (snapshot.hasData) {
-              return Column(
+              return Stack(
                 children: <Widget>[
                   Container(
-                    height: ScreenUtil().setHeight(1334 - 128 - 120 - 24),
-                    child: Consumer<ProductDetailProvider>(
-                        builder: (context, provider, child) {
-                          return Container(
-                            child: ListView(
-                              children: <Widget>[
-                                ProductDetailTopWidget(
-                                  goodInfo: provider.productInfoModel.goodInfo,
-                                ),
-                                ProductDetailTabbarWidget(),
-                                ProductDetailHtmlWidget()
-                              ],
-                            ),
-                          );
-                        }),
+                    child: ListView(
+                      children: <Widget>[
+                        ProductDetailTopWidget(),
+                        ProductDetailTabbarWidget(),
+                        ProductDetailHtmlWidget()
+                      ],
+                    ),
                   ),
-                  ProductDetailBottomWidget()
+                  Positioned(child: ProductDetailBottomWidget(),left: 0,bottom: 0,)
                 ],
               );
             } else {
@@ -56,8 +49,9 @@ class ProductDetailPage extends StatelessWidget {
   }
 
   Future _getProductDetail(BuildContext context) async {
-    var _provider = Provider.of<ProductDetailProvider>(context, listen: false);
-    await _provider.getProductDetailByProductId(this.productId);
+//    var _provider = Provider.of<ProductDetailProvider>(context, listen: false);
+//    await _provider.getProductDetailByProductId(this.productId);
+    await Provider.of<ProductDetailProvider>(context, listen: false).getProductDetailByProductId(this.productId);
     return '完成加载';
   }
 }

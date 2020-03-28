@@ -9,22 +9,25 @@ class ProductDetailHtmlWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Consumer<ProductDetailProvider>(builder: (context, provider,child) {
-        if (provider.isLeft) {
-          return Html(data: provider.productInfoModel.goodInfo.goodsDetail);
+        if (provider.productInfoModel == null) {
+          return Container(child: Center(child: Text('正在加载中...'),),);
         } else {
-          return Column(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.fromLTRB(10, 30, 10, 50),
-                child: Center(
-                  child: Text('暂时还没有评论喔！'),
+          if (provider.isLeft) {
+            return Html(data: provider.productInfoModel.goodInfo.goodsDetail);
+          } else {
+            return Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.fromLTRB(10, 30, 10, 50),
+                  child: Center(
+                    child: Text('暂时还没有评论喔！'),
+                  ),
                 ),
-              ),
-              Image.network(provider.productInfoModel.advertesPicture.pICTUREADDRESS,width: ScreenUtil().setWidth(750),)
-            ],
-          );
+                Image.network(provider.productInfoModel.advertesPicture.pICTUREADDRESS,width: ScreenUtil().setWidth(750),)
+              ],
+            );
+          }
         }
-
       }),
     );
   }
