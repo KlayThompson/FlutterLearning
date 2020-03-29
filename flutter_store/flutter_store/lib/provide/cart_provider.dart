@@ -35,7 +35,8 @@ class CartProvider with ChangeNotifier {
       'goodsName':name,
       'count':count,
       'price':price,
-      'images':image
+      'images':image,
+      'isSelect': true,
     };
 
     if (!exist) {

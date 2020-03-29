@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store/pages/cart/cart_bottom_widget.dart';
+import 'package:flutter_store/pages/cart/cart_cell_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_store/provide/cart_provider.dart';
 
@@ -15,11 +17,16 @@ class CartPage extends StatelessWidget {
               if (snapshot.hasData) {
                 return Consumer<CartProvider>(
                     builder: (context, provider, child) {
-                      return ListView.builder(
-                        itemCount: provider.products.length,
+                      return Stack(
+                        children: <Widget>[
+                      ListView.builder(
+                      itemCount: provider.products.length,
                           itemBuilder: (context, index) {
-                          return ListTile(title: Text(provider.products[index].goodsName),);
+                            return CartCellWidget(provider.products[index]);
                           }
+                      ),
+                          Positioned(child: CartBottomWidget(), left: 0,bottom: 0,)
+                        ],
                       );
                     }
                 );

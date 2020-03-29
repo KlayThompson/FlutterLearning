@@ -6,9 +6,10 @@ class CartProductModel {
   int count;
   double price;
   String images;
+  bool isSelect;
 
   CartProductModel(
-      {this.goodsId, this.goodsName, this.count, this.price, this.images});
+      {this.goodsId, this.goodsName, this.count, this.price, this.images, this.isSelect});
 
   CartProductModel.fromJson(Map<String, dynamic> json) {
     goodsId = json['goodsId'];
@@ -16,6 +17,7 @@ class CartProductModel {
     count = json['count'];
     price = json['price'];
     images = json['images'];
+    isSelect = json['isSelect'];
   }
 
   Map<String, dynamic> toJson() {
@@ -25,6 +27,7 @@ class CartProductModel {
     data['count'] = this.count;
     data['price'] = this.price;
     data['images'] = this.images;
+    data['isSelect'] = this.isSelect;
     return data;
   }
 }
