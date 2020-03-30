@@ -39,7 +39,7 @@ class CartPage extends StatelessWidget {
   }
 
   Future _getProducts(BuildContext context) async{
-    await Provider.of<CartProvider>(context).getCartProducts();
+    await Provider.of<CartProvider>(context,listen: false).getCartProducts();
     return 'ok';
   }
 }

@@ -1,34 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_store/provide/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class CartBottomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Row(
-        children: <Widget>[
-          _getLeftSelectAllWidget(),
-          _getTotalPriceWidget(),
-          _getRightWidget()
-        ],
-      ),
+    return Consumer<CartProvider>(
+
+        builder: (context, provider, child) {
+          return Container(
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                _getLeftSelectAllWidget(context),
+                _getTotalPriceWidget(provider.totalPrice),
+                _getRightWidget(provider.productCount)
+              ],
+            ),
+          );
+        }
     );
   }
 
-  Widget _getLeftSelectAllWidget() {
+  Widget _getLeftSelectAllWidget(BuildContext context) {
+    var provider = Provider.of<CartProvider>(context);
     return Container(
       padding: EdgeInsets.all(10),
       child: Row(
         children: <Widget>[
-          Checkbox(value: true, activeColor: Colors.pink, onChanged: (val) {}),
+          Checkbox(
+              value: provider.allCheck,
+              activeColor: Colors.pink,
+              onChanged: (val) {
+                provider.changeAllCheckState(val);
+              }),
           Text('全选'),
         ],
       ),
     );
   }
 
-  Widget _getTotalPriceWidget() {
+  Widget _getTotalPriceWidget(double price) {
     return Container(
       alignment: Alignment.centerRight,
 //      color: Colors.orange,
@@ -48,7 +61,7 @@ class CartBottomWidget extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 width: ScreenUtil().setWidth(150),
                 child: Text(
-                  '￥ 1992.09',
+                  '￥ ${price.toStringAsFixed(2)}',
                   style: TextStyle(color: Colors.redAccent),
                 ),
               )
@@ -67,7 +80,7 @@ class CartBottomWidget extends StatelessWidget {
     );
   }
 
-  Widget _getRightWidget() {
+  Widget _getRightWidget(int count) {
     return Container(
         width: ScreenUtil().setWidth(160),
         alignment: Alignment.center,
@@ -78,7 +91,7 @@ class CartBottomWidget extends StatelessWidget {
           child: InkWell(
             onTap: () {},
             child: Text(
-              '结算(9)',
+              '结算($count)',
               style: TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_store/provide/cart_provider.dart';
 import 'package:flutter_store/provide/product_detail_provider.dart';
+import 'package:flutter_store/provide/current_index_provider.dart';
 
 class ProductDetailBottomWidget extends StatelessWidget {
   @override
@@ -21,12 +22,42 @@ class ProductDetailBottomWidget extends StatelessWidget {
       color: Colors.white,
       child: Row(
         children: <Widget>[
-          InkWell(
-            onTap: () {},
-            child: Container(
-              width: ScreenUtil().setWidth(160),
-              child: Icon(CupertinoIcons.shopping_cart,color: Colors.red,size: 35,),
-            ),
+          Stack(
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  Provider.of<CurrentIndexProvider>(context).changeIndex(2);
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: ScreenUtil().setWidth(160),
+                  child: Icon(CupertinoIcons.shopping_cart,color: Colors.red,size: 35,),
+                ),
+              ),
+              Consumer<CartProvider>(
+                  builder: (context, provider, child) {
+                    return Positioned(
+                      right: 10,
+                        top: 0,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+                          decoration: BoxDecoration(
+                              color: Colors.pink,
+                              border: Border.all(width: 3, color: Colors.white),
+                              borderRadius: BorderRadius.circular(13)
+                          ),
+                          child: Text(
+                            '${provider.productCount}',
+                            style: TextStyle(
+                                fontSize: ScreenUtil().setSp(22),
+                                color: Colors.white
+                            ),
+                          ),
+                        )
+                    );
+                  }
+              )
+            ],
           ),
           InkWell(
             onTap: (){
