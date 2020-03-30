@@ -64,7 +64,6 @@ class CartProvider with ChangeNotifier {
   }
 
   getCartProducts() async{
-    print('111111111111111111');
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     //获取本地数据
