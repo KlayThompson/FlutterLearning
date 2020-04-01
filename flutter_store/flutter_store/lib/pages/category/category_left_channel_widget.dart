@@ -64,12 +64,12 @@ class _CategoryLeftWidgetState extends State<CategoryLeftWidget> {
     return Container(
       color: Colors.white,
       width: ScreenUtil().setWidth(220),
-      child: ListView.builder(
+      child: this.categories.length > 0 ? ListView.builder(
           itemCount: categories.length,
           itemBuilder: (context, index) {
             return _getSingleCategoryWidget(context,index);
           }
-      )
+      ) : Container(child: Center(child: CircularProgressIndicator(),),)
     );
   }
 }

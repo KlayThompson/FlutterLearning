@@ -43,6 +43,7 @@ class MemberPage extends StatelessWidget {
                   _getListTileWidget('地址管理', Icon(CupertinoIcons.location)),
                   _getListTileWidget('关于商城', Icon(CupertinoIcons.info)),
                   _getListTileWidget('扫码进行投诉', Icon(CupertinoIcons.switch_camera)),
+                  Padding(padding: EdgeInsets.only(bottom: 10))
                 ],
               ),
             )

@@ -39,6 +39,7 @@ class ProductDetailPage extends StatelessWidget {
               );
             } else {
               return Container(
+                color: Colors.yellow,
                 child: Center(
                   child: Text('加载中...'),
                 ),
