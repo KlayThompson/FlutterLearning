@@ -4,6 +4,7 @@ import 'package:flutter_trip/pages/home_page.dart';
 import 'package:flutter_trip/pages/mine_page.dart';
 import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/pages/travel_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TabNavigatorPage extends StatefulWidget {
   @override
@@ -40,13 +41,16 @@ class _TabNavigatorPageState extends State<TabNavigatorPage> {
   int _index = 0;
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 750, height: 1334);
     return Scaffold(
-      body: bodyPages[_index],
+      body: IndexedStack(
+        index: _index,
+        children: bodyPages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
           onTap: (tappedItemIndex) =>
               setState(() {
-                print(tappedItemIndex);
                 _index = tappedItemIndex;
               }),
           currentIndex: _index,
