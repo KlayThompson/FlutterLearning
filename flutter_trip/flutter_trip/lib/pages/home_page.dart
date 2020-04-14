@@ -1,9 +1,14 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/model/home_model.dart';
 import 'package:flutter_trip/widget/home/grid_nav.dart';
 import 'package:flutter_trip/widget/home/home_appbar.dart';
 import 'package:flutter_trip/widget/home/home_swiper_widget.dart';
 import 'package:flutter_trip/widget/home/local_nav.dart';
+import 'package:flutter_trip/widget/home/sales_nav.dart';
+import 'package:flutter_trip/widget/home/sub_nav.dart';
+import 'package:flutter_trip/widget/loading_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_trip/provider/home_provider.dart';
 
@@ -16,6 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
 
   double appBarAlpha = 0;
+  BuildContext topContext;
 
   @override
   // TODO: implement wantKeepAlive
@@ -23,10 +29,11 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
 
   @override
   Widget build(BuildContext context) {
+    topContext = context;
     return Scaffold(
       backgroundColor: Color(0xfff2f2f2),
         body: FutureBuilder(
-          future: _loadHomeData(context),
+          future: _loadHomeData(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Consumer<HomeProvider>(
@@ -44,13 +51,20 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                               },
                               child: Stack(
                                 children: <Widget>[
-                                  ListView(
-                                    children: <Widget>[
-                                      HomeBannerWidget(),
-                                      LocalNavWidget(provider.homeModel.localNavList ?? []),
-                                      GridNavWidget(provider.homeModel.gridNav)
-                                    ],
-                                  ),
+                                 LoadingWidget(
+                                     child: RefreshIndicator(
+                                         child:  ListView(
+                                           children: <Widget>[
+                                             HomeBannerWidget(provider.homeModel.bannerList),
+                                             LocalNavWidget(provider.homeModel.localNavList ?? []),
+                                             GridNavWidget(provider.homeModel.gridNav),
+                                             SubNavWidget(provider.homeModel.subNavList),
+                                             SalesNavWidget(provider.homeModel.salesBox)
+                                           ],
+                                         ),
+                                         onRefresh: _loadHomeData
+                                     ),
+                                     loading: provider.loading),
                                   CustomAppbar(provider.appBarAlpha)
                                 ],
                               ),
@@ -79,8 +93,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     Provider.of<HomeProvider>(context, listen: false).changeAppbarAlpha(alpha);
   }
 
-  Future _loadHomeData(BuildContext context) async{
-    await Provider.of<HomeProvider>(context, listen: false).getHomeData();
+  Future _loadHomeData() async{
+    await Provider.of<HomeProvider>(topContext, listen: false).getHomeData();
     return 'ok';
   }
 }
